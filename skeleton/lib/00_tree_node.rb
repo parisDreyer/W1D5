@@ -3,7 +3,11 @@ class PolyTreeNode
   def initialize(value, parent = nil, children = [])
     @value = value
     @parent = parent # instance variables AKA properties
+    unless parent.nil?
+      @parent.children.push(self) unless @parent.children.include?(self)
+    end
     @children = children
+    
   end
   
   def parent=(other_node)
